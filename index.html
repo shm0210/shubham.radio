@@ -4,8 +4,8 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#0b0a09">
-  <title>पापा के ज़माने के गाने — Radio</title>
-  <meta name="description" content="Papa Ke Jamane Ke Gaane — a nostalgic radio-style music player.">
+  <title>Suno Vibe — Suno. Feel Karo. Vibe Karo.</title>
+  <meta name="description" content="Suno Vibe — Suno. Feel Karo. Vibe Karo. A nostalgic radio-style music player.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Noto+Sans+Devanagari:wght@500;600;700;800&display=swap" rel="stylesheet">
@@ -16,18 +16,170 @@
     <div class="ambient ambient-a"></div>
     <div class="ambient ambient-b"></div>
 
-    <header class="topbar">
+        <header class="topbar">
       <div class="clock" id="clock">--:--</div>
       <div class="top-actions">
+        <!-- Radio Channel Dropdown -->
+        <div class="channel-dropdown">
+          <button class="channel-btn" id="channelBtn">
+            <span class="channel-icon-wrapper">
+              <svg class="channel-svg-icon" viewBox="0 0 24 24" width="16" height="16">
+                <circle cx="12" cy="12" r="3" fill="currentColor"/>
+                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 16c-3.31 0-6-2.69-6-6s2.69-6 6-6 6 2.69 6 6-2.69 6-6 6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+                <path d="M12 6c-3.31 0-6 2.69-6 6s2.69 6 6 6 6-2.69 6-6-2.69-6-6-6z" fill="none" stroke="currentColor" stroke-width="1"/>
+              </svg>
+            </span>
+            <span class="channel-name" id="currentChannelName">Papa Ke Jamane Ke Gaane</span>
+            <span class="channel-arrow">
+              <svg class="arrow-svg" viewBox="0 0 24 24" width="10" height="10">
+                <path d="M7 10l5 5 5-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </span>
+          </button>
+          <div class="channel-menu" id="channelMenu">
+            <div class="channel-header">📻 Radio Channels</div>
+            <div class="channel-item active" data-channel="papa">
+              <span class="channel-icon-s">
+                <svg viewBox="0 0 24 24" width="18" height="18">
+                  <circle cx="12" cy="12" r="3" fill="#f0b36d"/>
+                  <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z" fill="none" stroke="#f0b36d" stroke-width="1.5"/>
+                </svg>
+              </span>
+              Papa Ke Jamane Ke Gaane
+              <span class="channel-check">✓</span>
+            </div>
+            <div class="channel-item" data-channel="bhojpuri">
+              <span class="channel-icon-s">
+                <svg viewBox="0 0 24 24" width="18" height="18">
+                  <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z" fill="none" stroke="#ff6b35" stroke-width="1.5"/>
+                  <circle cx="12" cy="12" r="2" fill="#ff6b35"/>
+                  <path d="M7 8c3-3 6-3 10 0" stroke="#ff6b35" stroke-width="1.5" fill="none"/>
+                </svg>
+              </span>
+              Bhojpuri Banger
+              <span class="new-badge">HOT</span>
+            </div>
+            <div class="channel-item" data-channel="2009">
+              <span class="channel-icon-s">
+                <svg viewBox="0 0 24 24" width="18" height="18">
+                  <path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z" fill="none" stroke="#ffd700" stroke-width="1.5"/>
+                </svg>
+              </span>
+              2009s Vibe
+              <span class="new-badge">NEW</span>
+            </div>
+            <div class="channel-item" data-channel="bartam">
+              <span class="channel-icon-s">
+                <svg viewBox="0 0 24 24" width="18" height="18">
+                  <path d="M3 17v2h6v-2H3zM3 5v2h10V5H3zm10 16v-2h8v-2h-8v-2h-2v6h2zM7 9v2H3v2h4v2h2V9H7zm14 4v-2H11v2h10zm-6-4h2V7h-2v2z" fill="none" stroke="#4ecdc4" stroke-width="1.5"/>
+                </svg>
+              </span>
+              Bartan Time
+            </div>
+            <div class="channel-item" data-channel="gym">
+              <span class="channel-icon-s">
+                <svg viewBox="0 0 24 24" width="18" height="18">
+                  <path d="M20 18c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2h-4v2h4v8h-4v2h4zM4 18h4v-2H4V8h4V6H4c-1.1 0-2 .9-2 2v8c0 1.1.9 2 2 2z" fill="none" stroke="#ff6b6b" stroke-width="1.5"/>
+                  <rect x="8" y="6" width="8" height="12" rx="1" fill="none" stroke="#ff6b6b" stroke-width="1.5"/>
+                </svg>
+              </span>
+              Gym Jam
+            </div>
+            <div class="channel-item" data-channel="genz">
+              <span class="channel-icon-s">
+                <svg viewBox="0 0 24 24" width="18" height="18">
+                  <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z" fill="none" stroke="#a29bfe" stroke-width="1.5"/>
+                  <path d="M12 6v6l4 2" fill="none" stroke="#a29bfe" stroke-width="1.5"/>
+                </svg>
+              </span>
+              Genz Gaane
+            </div>
+            <div class="channel-item" data-channel="neendi">
+              <span class="channel-icon-s">
+                <svg viewBox="0 0 24 24" width="18" height="18">
+                  <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z" fill="none" stroke="#74b9ff" stroke-width="1.5"/>
+                  <path d="M12 6v6l3 3" fill="none" stroke="#74b9ff" stroke-width="1.5"/>
+                </svg>
+              </span>
+              Neendi Time
+            </div>
+            <div class="channel-item" data-channel="chatpate">
+              <span class="channel-icon-s">
+                <svg viewBox="0 0 24 24" width="18" height="18">
+                  <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z" fill="none" stroke="#e17055" stroke-width="1.5"/>
+                  <path d="M8 8l4 4-4 4" fill="none" stroke="#e17055" stroke-width="1.5"/>
+                </svg>
+              </span>
+              Chatpate Songs
+            </div>
+            <div class="channel-item" data-channel="tamil">
+              <span class="channel-icon-s">
+                <svg viewBox="0 0 24 24" width="18" height="18">
+                  <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z" fill="none" stroke="#fd79a8" stroke-width="1.5"/>
+                  <circle cx="12" cy="12" r="2" fill="#fd79a8"/>
+                </svg>
+              </span>
+              Tamil Hits
+            </div>
+            <div class="channel-item" data-channel="punjabi">
+              <span class="channel-icon-s">
+                <svg viewBox="0 0 24 24" width="18" height="18">
+                  <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z" fill="none" stroke="#00cec9" stroke-width="1.5"/>
+                  <circle cx="12" cy="12" r="2" fill="#00cec9"/>
+                </svg>
+              </span>
+              Punjabi Tadka
+            </div>
+            <div class="channel-item" data-channel="kk">
+              <span class="channel-icon-s">
+                <svg viewBox="0 0 24 24" width="18" height="18">
+                  <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z" fill="none" stroke="#fdcb6e" stroke-width="1.5"/>
+                  <path d="M9 8l6 4-6 4V8z" fill="none" stroke="#fdcb6e" stroke-width="1.5"/>
+                </svg>
+              </span>
+              The Great KK
+            </div>
+          </div>
+        </div>
+
         <div class="top-volume">
-          <button class="icon-btn" id="muteBtn" title="Mute / unmute" aria-label="Mute / unmute">◖</button>
+          <button class="icon-btn" id="muteBtn" title="Mute / unmute" aria-label="Mute / unmute">
+            <svg viewBox="0 0 24 24" width="18" height="18">
+              <path d="M3 9v6h4l5 5V4L7 9H3z" fill="currentColor"/>
+              <path d="M16 7c2 2 2 6 0 8" fill="none" stroke="currentColor" stroke-width="2"/>
+              <path d="M19 4c4 4 4 12 0 16" fill="none" stroke="currentColor" stroke-width="2"/>
+            </svg>
+          </button>
           <input id="volumeRange" type="range" min="0" max="1" step="0.01" value="0.85" aria-label="Volume">
           <button class="icon-btn visually-hidden" id="volumeIcon" tabindex="-1" aria-hidden="true">◖</button>
         </div>
-        <button class="icon-btn" id="queueBtn" title="Toggle playlist" aria-label="Toggle playlist">☷</button>
-        <button class="icon-btn" id="themeBtn" title="Toggle contrast" aria-label="Toggle contrast">◐</button>
-        <button class="support-pill" id="supportBtn">♡ Support</button>
-        <button class="icon-btn" id="fullscreenBtn" title="Fullscreen" aria-label="Fullscreen">⛶</button>
+
+        <!-- Instagram Button (Replaced Theme Button) -->
+        <a href="https://www.instagram.com/i.shubham0210/" target="_blank" class="icon-btn instagram-btn" title="Instagram DM" aria-label="Instagram">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+          </svg>
+        </a>
+
+        <button class="support-pill" id="supportBtn">
+          <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M18 8h1a4 4 0 0 1 0 8h-1"/>
+            <path d="M6 8h1a4 4 0 0 1 0 8H6"/>
+            <path d="M4 8h16v8H4z"/>
+            <circle cx="12" cy="12" r="2"/>
+          </svg>
+          Support us
+        </button>
+        <button class="icon-btn" id="fullscreenBtn" title="Fullscreen" aria-label="Fullscreen">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M8 3H5a2 2 0 0 0-2 2v3"/>
+            <path d="M21 8V5a2 2 0 0 0-2-2h-3"/>
+            <path d="M16 21h3a2 2 0 0 0 2-2v-3"/>
+            <path d="M3 16v3a2 2 0 0 0 2 2h3"/>
+          </svg>
+        </button>
       </div>
     </header>
 
@@ -35,12 +187,10 @@
       <section class="hero">
         <div class="hero-copy">
           <div class="eyebrow"><span class="live-dot"></span> NOW PLAYING · RADIO</div>
-          <h1>पापा के<br>ज़माने के गाने</h1>
-          <p class="hero-sub">पुराने गीत, वही एहसास — एक सुकून भरी शाम के लिए।</p>
+          <h1 id="heroTitle">पापा के<br>ज़माने के गाने</h1>
+          <p class="hero-sub" id="heroSub">पुराने गीत, वही एहसास — एक सुकून भरी शाम के लिए।</p>
           <div class="hero-meta">
             <span id="onlineCount">● 1 listener</span>
-            <span>Playlist ID: <b>9495307201</b></span>
-            <span id="songCount">0 songs</span>
           </div>
         </div>
 
@@ -62,21 +212,10 @@
         <div class="sidebar-head">
           <div>
             <small>PLAYLIST</small>
-            <h2>Papa Ke Jamane Ke Gaane</h2>
+            <h2 id="playlistTitle">Papa Ke Jamane Ke Gaane</h2>
           </div>
           <span class="status-dot"></span>
         </div>
-
-        <div class="search-wrap">
-          <span>⌕</span>
-          <input id="searchInput" type="search" placeholder="Search songs or artists…" autocomplete="off">
-        </div>
-
-        <nav class="quick-nav">
-          <button class="nav-item active" data-view="all"><span>◉</span> All Songs <em id="allCount">0</em></button>
-          <button class="nav-item" data-view="favorites"><span>♡</span> Favorites <em id="favCount">0</em></button>
-          <button class="nav-item" data-view="recent"><span>◷</span> Recently Played</button>
-        </nav>
 
         <div class="playlist-scroll" id="playlist"></div>
       </aside>
@@ -87,10 +226,6 @@
         <span class="section-kicker">YOUR RADIO</span>
         <strong id="queueTitle">Papa Ke Jamane Ke Gaane</strong>
       </div>
-      <div class="queue-actions">
-        <button class="small-btn" id="shuffleBtn">⤨ Shuffle</button>
-        <button class="small-btn" id="repeatBtn">↻ Repeat: Off</button>
-      </div>
     </section>
 
     <footer class="mini-player" id="miniPlayer">
@@ -99,14 +234,32 @@
         <div class="mini-text">
           <div class="mini-title-row">
             <strong id="nowTitle">Choose a song</strong>
-            <button class="mini-dots" id="likeBtn" title="Favorite" aria-label="Favorite">♡</button>
+            <button class="mini-dots" id="playlistPopupBtn" title="Show playlist" aria-label="Show playlist">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="5" r="1"/>
+                <circle cx="12" cy="12" r="1"/>
+                <circle cx="12" cy="19" r="1"/>
+              </svg>
+            </button>
           </div>
           <span id="nowArtist">Papa Ke Jamane Ke Gaane</span>
         </div>
         <div class="mini-controls">
-          <button class="control" id="prevBtn" title="Previous" aria-label="Previous">⏮</button>
-          <button class="play" id="playBtn" title="Play / pause" aria-label="Play / pause">▶</button>
-          <button class="control" id="nextBtn" title="Next" aria-label="Next">⏭</button>
+          <button class="control" id="prevBtn" title="Previous" aria-label="Previous">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+              <path d="M6 6h2v12H6zm3.5 6l8.5 6V6z"/>
+            </svg>
+          </button>
+          <button class="play" id="playBtn" title="Play / pause" aria-label="Play / pause">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+              <path d="M8 5v14l11-7z"/>
+            </svg>
+          </button>
+          <button class="control" id="nextBtn" title="Next" aria-label="Next">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+              <path d="M6 18l8.5-6L6 6v12zM16 6v12h2V6h-2z"/>
+            </svg>
+          </button>
         </div>
       </div>
       <div class="mini-progress-row">
@@ -114,6 +267,23 @@
         <span class="mini-time"><span id="currentTime">0:00</span> / <span id="duration">0:00</span></span>
       </div>
     </footer>
+
+    <!-- Playlist Popup (Modern Floating Card) -->
+    <div class="playlist-popup" id="playlistPopup" hidden>
+      <div class="popup-header">
+        <div class="popup-title-wrap">
+          <span class="popup-title">Playlist</span>
+          <span class="popup-count" id="popupCount">0</span>
+        </div>
+        <button class="popup-close" id="playlistPopupClose">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="18" y1="6" x2="6" y2="18"/>
+            <line x1="6" y1="6" x2="18" y2="18"/>
+          </svg>
+        </button>
+      </div>
+      <div class="popup-list" id="popupList"></div>
+    </div>
 
     <div class="toast" id="toast" role="status" aria-live="polite"></div>
     <div class="error-panel" id="errorPanel" hidden>
