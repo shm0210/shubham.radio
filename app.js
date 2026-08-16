@@ -1,6 +1,10 @@
 const PLAYLIST_ID = "9495307201/papa-ke-jamane-ke-gaane";
 const BASE_URL = "https://pub-dca67106d684416ebbeaf0588d7d3363.r2.dev/papa-ke-jamane-ke-gaane/";
 const BHOJPURI_BASE_URL = "https://pub-dca67106d684416ebbeaf0588d7d3363.r2.dev/bihari-banger/";
+const BARTAN_BASE_URL = "https://pub-dca67106d684416ebbeaf0588d7d3363.r2.dev/bartan-time/";
+const GENZ_BASE_URL = "https://pub-dca67106d684416ebbeaf0588d7d3363.r2.dev/genz-gaane/";
+const NEENDI_BASE_URL = "https://pub-dca67106d684416ebbeaf0588d7d3363.r2.dev/neendi-time/";
+const VIBE2009_BASE_URL = "https://pub-dca67106d684416ebbeaf0588d7d3363.r2.dev/2009-vibes/";
 const CHANNEL_KEY = "pkj-channel-v1";
 
 const audio = document.getElementById("audio");
@@ -52,16 +56,16 @@ const CHANNELS = {
   '2009': {
     id: '2009',
     name: '2009s Vibe',
-    songList: [],
-    baseUrl: '',
+    songList: vibe2009Songs,
+    baseUrl: VIBE2009_BASE_URL,
     heroTitle: '2009<br>की यादें',
     heroSub: 'वो साल, वो गाने — एक सुनहरी यात्रा।'
   },
   bartam: {
     id: 'bartam',
     name: 'Bartan Time',
-    songList: [],
-    baseUrl: '',
+    songList: bartanSongs,
+    baseUrl: BARTAN_BASE_URL,
     heroTitle: 'बर्तन<br>टाइम',
     heroSub: 'किचन में काम करते हुए गाने — मज़ा आ जाए!'
   },
@@ -76,16 +80,16 @@ const CHANNELS = {
   genz: {
     id: 'genz',
     name: 'Genz Gaane',
-    songList: [],
-    baseUrl: '',
+    songList: genzSongs,
+    baseUrl: GENZ_BASE_URL,
     heroTitle: 'Gen Z<br>गाने',
     heroSub: 'नई पीढ़ी के हिट्स — हर दिन नया ट्रेंड!'
   },
   neendi: {
     id: 'neendi',
     name: 'Neendi Time',
-    songList: [],
-    baseUrl: '',
+    songList: neendiSongs,
+    baseUrl: NEENDI_BASE_URL,
     heroTitle: 'नींदी<br>टाइम',
     heroSub: 'सुकून भरी रातें, मीठे सपने — आराम की लोरी।'
   },
@@ -145,27 +149,21 @@ const fmt = seconds => {
   return `${m}:${String(s).padStart(2,"0")}`;
 };
 
-// EXACT URL construction for Papa songs
+// EXACT URL construction — matches the R2 upload encoding used across all channels
+// (spaces are %20, but comma / & / ( ) / ' / + are left literal, unencoded)
 const urlFor = (filename, channelId) => {
   const channel = CHANNELS[channelId || state.channel];
   const base = channel.baseUrl || '';
-  
-  // For Papa channel, use the exact URL format from your file
-  if (channelId === 'papa' || state.channel === 'papa') {
-    let encoded = encodeURIComponent(filename)
-      .replace(/%2C/g, ',')
-      .replace(/%20/g, '%20');
-    
-    encoded = encoded
-      .replace(/%26/g, '&')
-      .replace(/%28/g, '(')
-      .replace(/%29/g, ')')
-      .replace(/%2B/g, '+');
-    
-    return base + encoded;
-  }
-  
-  return base + encodeURIComponent(filename);
+
+  let encoded = encodeURIComponent(filename)
+    .replace(/%2C/g, ',')
+    .replace(/%26/g, '&')
+    .replace(/%28/g, '(')
+    .replace(/%29/g, ')')
+    .replace(/%27/g, "'")
+    .replace(/%2B/g, '+');
+
+  return base + encoded;
 };
 
 function savePrefs(){
@@ -365,6 +363,25 @@ document.getElementById("fullscreenBtn").onclick=async()=>{
     else await document.exitFullscreen();
   }catch{notify("Fullscreen is not available in this browser")}
 };
+
+// Welcome popup
+const WELCOME_KEY = "sv-welcome-seen-v1";
+const welcomeOverlay = document.getElementById("welcomeOverlay");
+const welcomeClose = document.getElementById("welcomeClose");
+function openWelcome(){
+  welcomeOverlay.hidden = false;
+}
+function closeWelcome(){
+  welcomeOverlay.hidden = true;
+  localStorage.setItem(WELCOME_KEY, "1");
+}
+welcomeClose.onclick = closeWelcome;
+welcomeOverlay.addEventListener("click", (e)=>{
+  if(e.target === welcomeOverlay) closeWelcome();
+});
+if(!localStorage.getItem(WELCOME_KEY)){
+  openWelcome();
+}
 
 // Playlist popup events
 playlistPopupBtn.onclick = openPlaylistPopup;

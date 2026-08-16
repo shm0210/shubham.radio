@@ -167,6 +167,22 @@ html,body{height:100%;overflow:hidden}
 @media(max-width:1050px){.main-grid{min-height:0;overflow:hidden}.hero{min-height:0}.sidebar{height:100%}}
 @media(max-width:700px){.app-shell{height:100dvh}.topbar{flex-basis:54px;height:54px}.main-grid{display:grid;grid-template-rows:minmax(0,1fr) minmax(0,1fr);gap:8px;overflow:hidden}.hero{min-height:0;height:100%;padding:22px 20px}.hero h1{font-size:clamp(40px,12vw,54px)}.sidebar{height:100%;min-height:0}.playlist-scroll{min-height:0}.queue-strip{margin-top:5px}}
 
+/* Welcome Popup */
+.welcome-overlay{position:fixed;inset:0;z-index:100;display:flex;align-items:center;justify-content:center;padding:24px;background:rgba(8,6,4,.55);backdrop-filter:blur(6px);animation:welcomeFadeIn .25s ease-out}
+.welcome-overlay[hidden]{display:none}
+@keyframes welcomeFadeIn{from{opacity:0}to{opacity:1}}
+.welcome-card{position:relative;width:min(420px,100%);padding:34px 28px 28px;border-radius:26px;border:1px solid rgba(255,255,255,.14);background:rgba(30,25,20,.72);backdrop-filter:blur(28px);box-shadow:0 30px 90px rgba(0,0,0,.55);text-align:center;animation:welcomeSlideUp .3s ease-out}
+@keyframes welcomeSlideUp{from{opacity:0;transform:translateY(18px) scale(.97)}to{opacity:1;transform:translateY(0) scale(1)}}
+.welcome-close{position:absolute;top:16px;right:16px;width:34px;height:34px;border-radius:50%;border:0;background:rgba(255,255,255,.12);color:#fff;display:grid;place-items:center;cursor:pointer;transition:.2s}
+.welcome-close:hover{background:rgba(255,255,255,.2);transform:rotate(90deg)}
+.welcome-title{font-size:24px;font-weight:800;color:#fff;margin:6px 0 18px}
+.welcome-badge{display:inline-flex;align-items:center;gap:6px;padding:9px 18px;border-radius:999px;border:1px solid rgba(255,255,255,.18);background:rgba(255,255,255,.08);font-size:13px;font-weight:700;color:#f7f0e7;margin-bottom:18px}
+.welcome-sub{font-size:14px;line-height:1.5;color:#c7bcae;max-width:320px;margin:0 auto 26px}
+.welcome-coffee-btn{display:block;width:100%;padding:15px;border-radius:14px;background:#f5eee6;color:#201a15;font-weight:800;font-size:14px;text-decoration:none;box-shadow:0 10px 24px rgba(0,0,0,.25);transition:.2s;margin-bottom:12px}
+.welcome-coffee-btn:hover{background:#fff;transform:translateY(-1px)}
+.welcome-suggest-btn{display:block;width:100%;padding:14px;border-radius:14px;border:1px solid rgba(255,255,255,.18);color:#f7f0e7;font-weight:700;font-size:14px;text-decoration:none;transition:.2s}
+.welcome-suggest-btn:hover{background:rgba(255,255,255,.08)}
+
 input[type=range]{accent-color:var(--accent);width:100%;cursor:pointer;background:transparent}
 input[type=range]::-webkit-slider-runnable-track{height:4px;background:rgba(255,255,255,.15);border-radius:2px}
 input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;height:14px;width:14px;border-radius:50%;background:var(--accent);margin-top:-5px;cursor:pointer;box-shadow:0 2px 8px rgba(0,0,0,.3)}

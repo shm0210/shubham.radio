@@ -285,6 +285,23 @@
       <div class="popup-list" id="popupList"></div>
     </div>
 
+    <!-- Welcome Popup -->
+    <div class="welcome-overlay" id="welcomeOverlay" hidden>
+      <div class="welcome-card">
+        <button class="welcome-close" id="welcomeClose" aria-label="Close">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="18" y1="6" x2="6" y2="18"/>
+            <line x1="6" y1="6" x2="18" y2="18"/>
+          </svg>
+        </button>
+        <h2 class="welcome-title">Welcome to Suno Vibe</h2>
+        <div class="welcome-badge">🎉 New playlists added !!!</div>
+        <p class="welcome-sub">Keep the music playing. More curated playlists are on the way.</p>
+        <a class="welcome-coffee-btn" id="welcomeCoffeeBtn" href="https://www.buymeacoffee.com/sunovibe" target="_blank" rel="noopener">Buy me a coffee to keep this free</a>
+        <a class="welcome-suggest-btn" id="welcomeSuggestBtn" href="https://forms.gle/your-suggest-a-playlist-form" target="_blank" rel="noopener">Suggest a playlist</a>
+      </div>
+    </div>
+
     <div class="toast" id="toast" role="status" aria-live="polite"></div>
     <div class="error-panel" id="errorPanel" hidden>
       <b>Playback unavailable</b>
